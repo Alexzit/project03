@@ -1,8 +1,6 @@
 package com.alexzit.project03.service;
 
 import com.alexzit.project03.domain.*;
-import com.sun.org.apache.bcel.internal.generic.SWITCH;
-
 import static com.alexzit.project03.service.Data.*;
 
 /**
@@ -39,23 +37,25 @@ public class NameListService
                     break;
                 case PROGRAMMER:
                     equipment = createEquipment(i);
-                    employees[i] = new Programmer(id, name, age, salary, equipment)
+                    employees[i] = new Programmer(id, name, age, salary, equipment);
                     break;
                 case DESIGNER:
                     equipment = createEquipment(i);
                     bonus = Double.parseDouble(EMPLOYEES[i][5]);
-                    employees[i] = new Designer(id,name,age,salary,equipment,bonus);
+                    employees[i] = new Designer(id, name, age, salary, equipment, bonus);
+                    break;
                 case ARCHITECT:
                     equipment = createEquipment(i);
                     bonus = Double.parseDouble(EMPLOYEES[i][5]);
                     stock = Integer.parseInt(EMPLOYEES[i][6]);
-                    employees[i] = new Architect(id,name,age,salary,equipment,bonus,stock);
+                    employees[i] = new Architect(id, name, age, salary, equipment, bonus, stock);
             }
         }
     }
 
     /**
      * 获取指定位置上的员工设备
+     *
      * @param i
      * @return
      */
@@ -66,22 +66,31 @@ public class NameListService
         switch(type)
         {
             case PC:
-                return new PC(model,EQUIPMENTS[i][2]);
+                return new PC(model, EQUIPMENTS[i][2]);
             case NOTEBOOK:
                 double price = Double.parseDouble(EQUIPMENTS[i][2]);
                 return new NoteBook(model, price);
             case PRINTER:
-                return new Printer(model,EQUIPMENTS[i][2]);
+                return new Printer(model, EQUIPMENTS[i][2]);
         }
         return null;
     }
 
     public Employee[] getAllEmployees()
     {
-        return null;
+        return employees;
+    }
 
-    public Employee getEmployees(int id)
+    public Employee getEmployees(int id) throws TeamException
     {
-        return null;
+        for(int i = 0; i < employees.length; i++)
+        {
+            if(employees[i].getId() == id)
+            {
+                return employees[i];
+            }
+        }
+
+        throw new TeamException("找不到指定员工！");
     }
 }
