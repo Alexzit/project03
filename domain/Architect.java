@@ -18,7 +18,7 @@ public class Architect extends Designer
         this.stock = stock;
     }
 
-    public Architect(int id, String name, int age, double salary, privte equipment, double bonus, int stock)
+    public Architect(int id, String name, int age, double salary, Equipment equipment, double bonus, int stock)
     {
         super(id, name, age, salary, equipment, bonus);
         this.stock = stock;
@@ -32,5 +32,15 @@ public class Architect extends Designer
     public void setStock(int stock)
     {
         this.stock = stock;
+    }
+
+    public String toString()
+    {
+        return super.getDetails() + "\t\t架构师\t" + getStatus() + "\t" + getBonus() + "\t" + stock + "\t" + getEquipment().getDescription();
+    }
+
+    public String getDetailsForTeam()
+    {
+        return getBaseDetails() + "\t" + "架构师" + "\t" + getBonus() + "\t" + stock;
     }
 }

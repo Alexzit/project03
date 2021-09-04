@@ -7,13 +7,13 @@ package com.alexzit.project03.domain;
 public class NoteBook implements Equipment
 {
     private String model;//机器型号
-    private doubel price;//价格
+    private double price;//价格
 
     public NoteBook()
     {
     }
 
-    public NoteBook(String model, doubel price)
+    public NoteBook(String model, double price)
     {
         this.model = model;
         this.price = price;
@@ -36,12 +36,12 @@ public class NoteBook implements Equipment
         this.model = model;
     }
 
-    public doubel getPrice()
+    public double getPrice()
     {
         return price;
     }
 
-    public void setPrice(doubel price)
+    public void setPrice(double price)
     {
         this.price = price;
     }

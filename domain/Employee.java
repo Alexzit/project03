@@ -62,4 +62,16 @@ public class Employee
     {
         this.salary = salary;
     }
+
+    public String getDetails()
+    {
+        return id + "\t\t" + name + "\t\t" + age + "\t\t" + salary;
+
+    }
+
+    @Override
+    public String toString()
+    {
+        return id + "\t\t" + name + "\t\t" + age + "\t\t" + salary;
+    }
 }
